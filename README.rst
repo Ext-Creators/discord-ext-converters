@@ -1,21 +1,19 @@
-discord-ext-*
-=============
+discord-ext-converters
+======================
 
-Badges go up here.
+|dependencies| |license|
 
-This line is the repository description again.
-
-Then repository specific information goes down here.
+A collection of useful converters for discord.py.
 
 
 Installation
 ------------
 
-Note whether extension is on PyPI here.
+This extension is currently not in PyPI.
 
 .. code-block:: sh
 
-    # how to install should go here.
+    $ python3 -m pip install -U git+https://github.com/Ext-Creators/discord-ext-converters
 
 
 Usage
@@ -23,4 +21,8 @@ Usage
 
 .. code-block:: py
 
-    # Usage examples should go here.
+    from discord.ext import converters
+    # Adds support for all avaialble converters
+
+.. |dependencies| image:: https://img.shields.io/librariesio/github/Ext-Creators/discord-ext-converters.svg
+.. |license| image:: https://img.shields.io/github/license/Ext-Creators/discord-ext-converters
