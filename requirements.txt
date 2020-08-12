@@ -1,2 +1,4 @@
+backports.zoneinfo>=0.2.1;python_version<"3.9"
 discord.py>=1.4.0
 discord-ext-alternatives>=2020.7.30
+tzdata>=2020.1;os_name=="nt"

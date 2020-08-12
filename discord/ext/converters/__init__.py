@@ -16,6 +16,8 @@
 
 from collections import namedtuple
 
+from . import uuid, zoneinfo
+
 from discord.ext.alternatives import converter_dict
 from .meta import ConverterMixin
 
