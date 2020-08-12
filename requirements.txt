@@ -1,1 +1,2 @@
-discord.py>=1.3.4
+discord.py>=1.4.0
+discord-ext-alternatives>=2020.7.30

@@ -16,6 +16,8 @@
 
 from collections import namedtuple
 
+from discord.ext.alternatives import converter_dict
+from .meta import ConverterMixin
 
 __version__ = "0.1.0a"
 
