@@ -1,4 +1,5 @@
 import inspect
+import copy
 
 from discord.ext.commands import GroupMixin, Command, Group
 
@@ -27,7 +28,7 @@ class ConvertersGroupMixin(GroupMixin):
         def decorator(func):
             kwargs.setdefault('parent', self)
             result = command(*args, **kwargs)(func)
-            result.converters = self.converters
+            result.converters = copy.deepcopy(self.converters)
             self.add_command(result)
             return result
         
