@@ -10,13 +10,9 @@ class MatchConverter(commands.Converter):
         self.flags = flags
 
     async def convert(self, ctx, argument: str) -> re.Match:
-        match: Optional[re.Match] = re.fullmatch(
-            self.pattern, argument, flags=self.flags
-        )
+        match: Optional[re.Match] = re.fullmatch(self.pattern, argument, self.flags)
         if match is None:
             raise commands.BadArgument(
-                "{0} does not match in the regex pattern ({1})".format(
-                    argument, self.pattern
-                )
+                "{0} does not match the provided pattern".format(argument)
             )
         return match
