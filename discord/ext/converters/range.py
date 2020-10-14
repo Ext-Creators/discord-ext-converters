@@ -2,8 +2,8 @@ from discord.ext import commands
 
 
 class InRangeConverter(commands.Converter):
-    def __init__(self, *args, **kwargs) -> None:
-        self.range = range(*args, **kwargs)
+    def __init__(self, *args) -> None:
+        self.range = range(*args)
 
     async def convert(self, ctx, argument: str) -> int:
         try:
