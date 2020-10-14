@@ -13,7 +13,7 @@ class MatchConverter(commands.Converter):
         match: Optional[re.Match] = re.fullmatch(
             self.pattern, argument, flags=self.flags
         )
-        if match:
+        if match is None:
             raise commands.BadArgument(
                 "{0} does not match in the regex pattern ({1})".format(
                     argument, self.pattern
