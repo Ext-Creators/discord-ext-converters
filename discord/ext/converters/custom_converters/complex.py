@@ -1,5 +1,7 @@
 from discord.ext import commands
 
+from . import CONVERTERS
+
 
 class ComplexConverter(commands.Converter):
 
@@ -11,3 +13,5 @@ class ComplexConverter(commands.Converter):
 
         return value
 
+
+CONVERTERS[complex] = ComplexConverter

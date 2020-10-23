@@ -8,6 +8,8 @@ except ImportError:
 
 from discord.ext import commands
 
+from . import CONVERTERS
+
 
 class ZoneInfoConverter(commands.Converter):
 
@@ -19,3 +21,5 @@ class ZoneInfoConverter(commands.Converter):
 
         return value
 
+
+CONVERTERS[zoneinfo.ZoneInfo] = ZoneInfoConverter

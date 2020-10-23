@@ -2,6 +2,8 @@ from uuid import UUID
 
 from discord.ext import commands
 
+from . import CONVERTERS
+
 
 class UUIDConverter(commands.Converter):
 
@@ -13,3 +15,5 @@ class UUIDConverter(commands.Converter):
 
         return value
 
+
+CONVERTERS[UUID] = UUIDConverter

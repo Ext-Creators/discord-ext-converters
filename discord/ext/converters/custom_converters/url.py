@@ -2,6 +2,8 @@ from yarl import URL
 
 from discord.ext import commands
 
+from . import CONVERTERS
+
 
 class URLConverter(commands.Converter):
 
@@ -15,3 +17,5 @@ class URLConverter(commands.Converter):
 
         return value
 
+
+CONVERTERS[URL] = URLConverter
