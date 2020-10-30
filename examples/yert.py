@@ -1,16 +1,16 @@
 from discord.ext.converters import ConvertersBot
 
-cbot = ConvertersBot(command_prefix='!')
+bot = ConvertersBot(command_prefix='!')
 
 class Yert:
     yert = 'yert'
 
-@cbot.converters.register(Yert)
-async def convert_yert(ctx, arg):
+@bot.converters.register(Yert)
+async def convert_Yert(ctx, arg):
     return Yert()
 
-@cbot.command()
+@bot.command()
 async def yert(ctx, yert: Yert):
     await ctx.send(yert.yert)
 
-cbot.run('token')
+bot.run('token')

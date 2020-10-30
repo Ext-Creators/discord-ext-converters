@@ -17,7 +17,7 @@ setup(
     python_requires=">=3.5.3",
     url="https://github.com/Ext-Creators/discord-ext-converters",
     version=version,
-    packages=["discord.ext.converters"],
+    packages=["discord.ext.converters", "discord.ext.converters.custom_converters"],
     license="Apache Software License",
     description="A collection of useful converters.",
     long_description=readme,

@@ -27,7 +27,7 @@ class ConverterDict(dict):
     
     def __setitem__(self, k: typing.Any, v: typing.Any):
         if not (issubclass(v, converter.Converter) or inspect.isbuiltin(v)):
-            raise TypeError('Excepted value of type \'Converter\' or built-in, received %r' % v.__name__)
+            raise TypeError("Excepted value of type 'Converter' or built-in, received {}".format(v.__name__))
         super().__setitem__(k, v)
     
     def set(self, _type: typing.Any, converter: str) -> 'ConverterDict':

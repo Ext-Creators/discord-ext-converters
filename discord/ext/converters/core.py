@@ -28,7 +28,7 @@ class ConvertersGroupMixin(GroupMixin):
         def decorator(func):
             kwargs.setdefault('parent', self)
             result = command(*args, **kwargs)(func)
-            result.converters = copy.deepcopy(self.converters)
+            result.converters = copy.copy(self.converters)
             self.add_command(result)
             return result
         
@@ -38,6 +38,7 @@ class ConvertersGroupMixin(GroupMixin):
         def decorator(func):
             kwargs.setdefault('parent', self)
             result = group(*args, **kwargs)(func)
+            result.converters.update(copy.copy(self.converters))
             self.add_command(result)
             return result
 
@@ -60,8 +61,10 @@ def command(name=None, cls=None, **attrs):
 
 def group(name=None, **attrs):
     """A decorator that transforms a function into a :class:`.Group`.
+
     This is similar to the :func:`.command` decorator but the ``cls``
     parameter is set to :class:`Group` by default.
+
     .. versionchanged:: 1.1
         The ``cls`` parameter can now be passed.
     """
