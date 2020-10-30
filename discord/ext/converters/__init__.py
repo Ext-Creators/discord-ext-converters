@@ -15,11 +15,9 @@
 """
 
 from collections import namedtuple
-
-from . import uuid, zoneinfo
-
-from discord.ext.alternatives import converter_dict
-from .meta import ConverterMixin
+from .core import *
+from .model import ConverterDict
+from .bot import ConvertersBot, AutoShardedConvertersBot
 
 __version__ = "0.1.0a"
 
