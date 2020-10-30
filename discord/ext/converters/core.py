@@ -1,5 +1,6 @@
 import inspect
 import copy
+import typing
 
 from discord.ext.commands import GroupMixin, Command, Group
 
@@ -20,12 +21,14 @@ class ConvertersCommand(Command):
         converter = self.converters.get(converter, converter)
         return await super()._actual_conversion(ctx, converter, argument, param)
 
+T = ConvertersCommand
+
 class ConvertersGroupMixin(GroupMixin):
     converters = ConverterDict()
 
     # redefine GroupMixin#command and GroupMixin#group to work with redefined decorators
-    def command(self, *args, **kwargs):
-        def decorator(func):
+    def command(self, *args, **kwargs) -> typing.Callable[..., T]:
+        def decorator(func: typing.Callable[..., typing.Any]) -> T:
             kwargs.setdefault('parent', self)
             result = command(*args, **kwargs)(func)
             result.converters = copy.copy(self.converters)
@@ -34,8 +37,8 @@ class ConvertersGroupMixin(GroupMixin):
         
         return decorator
     
-    def group(self, *args, **kwargs):
-        def decorator(func):
+    def group(self, *args, **kwargs) -> typing.Callable[..., T]:
+        def decorator(func: typing.Callable[..., typing.Any]) -> T:
             kwargs.setdefault('parent', self)
             result = group(*args, **kwargs)(func)
             result.converters.update(copy.copy(self.converters))
@@ -48,18 +51,18 @@ class ConvertersGroupMixin(GroupMixin):
 class ConvertersGroup(ConvertersGroupMixin, ConvertersCommand):
     ...
 
-def command(name=None, cls=None, **attrs):
+def command(name: typing.Optional[str] = None, cls: typing.Optional[typing.Type[T]] = None, **attrs: typing.Any) -> typing.Callable[..., T]:
     if cls is None:
         cls = ConvertersCommand
 
-    def decorator(func):
+    def decorator(func: typing.Callable[..., typing.Any]) -> T:
         if isinstance(func, ConvertersCommand):
             raise TypeError('Callback is already a command.')
         return cls(func, name=name, **attrs)
 
     return decorator
 
-def group(name=None, **attrs):
+def group(name: typing.Optional[str] = None, **attrs: typing.Any) -> typing.Callable[..., typing.Union[ConvertersGroup, T]]:
     """A decorator that transforms a function into a :class:`.Group`.
 
     This is similar to the :func:`.command` decorator but the ``cls``

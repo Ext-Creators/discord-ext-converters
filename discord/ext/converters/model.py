@@ -69,6 +69,6 @@ class ConverterDict(dict):
             return _converter
         return predicate
 
-    def load(self, *_converters: str):
+    def load(self, *_converters: str) -> None:
         for c in _converters:
             importlib.import_module('discord.ext.converters.custom_converters.{}'.format(c)).setup(self)
