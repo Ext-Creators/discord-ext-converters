@@ -1,9 +1,13 @@
+import dataclasses
+import re
+
 from discord.ext.converters import ConvertersBot
 from discord.ext.commands import ConversionError
 from discord.utils import get
-import dataclasses
+
 
 bot = ConvertersBot(command_prefix='!')
+bot.converters.load('range', 'regex')
 
 @dataclasses.dataclass
 class GameInfo:
@@ -37,5 +41,15 @@ Description: {0.description}
 async def handle_info(ctx, err):
     if isinstance(err, ConversionError):
         await ctx.send(str(err.original))
+
+@bot.command()
+async def greet(ctx, num: range(1, 4)):
+    choice_list = ['', 'Hello!', 'Heya!', "Oh, it's you again."]
+    await ctx.send(choice_list[num])
+
+@bot.command()
+async def match(ctx, text: re.compile(r"hello\d+")):
+    # slight caveat, it uses compile to match, which would return re.Match, not re.Pattern
+    await ctx.send('`{}` is a match!'.format(text.group(0)))
 
 bot.run('token')

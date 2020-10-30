@@ -1,8 +1,10 @@
 import inspect
 import typing
+import importlib
 
 import discord
-from discord.ext.commands import converter, Command, Group, Context
+from discord.ext.commands import converter, Context
+from .converter import CustomConverter
 
 
 BASE_CONVERTERS = {
@@ -34,6 +36,17 @@ class ConverterDict(dict):
         self.__setitem__(_type, converter)
         return self
     
+    def get(self, _type: typing.Any, default: typing.Any = None) -> 'ConverterDict':
+        if inspect.isclass(_type):
+            return super().get(_type, default)
+        else:
+            _converter = super().get(type(_type), default)
+
+            if issubclass(_converter, CustomConverter):
+                _converter = _converter[_type]
+            
+            return _converter
+    
     def register(self, _type: type) -> converter.Converter:
         def predicate(handler: typing.Union[typing.Callable[[Context, str], typing.Awaitable[typing.Any]], converter.Converter]):
             # _type is what is should convert to.
@@ -55,3 +68,7 @@ class ConverterDict(dict):
             
             return _converter
         return predicate
+
+    def load(self, *_converters: str):
+        for c in _converters:
+            importlib.import_module('discord.ext.converters.custom_converters.{}'.format(c)).setup(self)
