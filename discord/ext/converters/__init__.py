@@ -18,6 +18,9 @@ from .mixins import ConvertersMixin
 
 from collections import namedtuple
 
+from .core import *
+from .model import ConverterDict
+from .bot import ConvertersBot, AutoShardedConvertersBot
 
 __version__ = "0.1.0a"
 

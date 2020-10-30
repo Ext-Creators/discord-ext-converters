@@ -1,16 +1,19 @@
 from discord.ext import commands
+from discord.ext.converters import converter
 
 
-class InRangeConverter(commands.Converter):
-    def __init__(self, *args) -> None:
-        self.range = range(*args)
+class InRangeConverter(converter.CustomConverter):
+    _value: range
 
     async def convert(self, ctx, argument: str) -> int:
         try:
-            value = int(argument)
+            argument = int(argument)
         except ValueError:
             raise commands.BadArgument("{0} is not int".format(argument))
 
-        if value in self.range:
-            return value
+        if argument in self._value:
+            return argument
         raise commands.BadArgument("{0} not in range".format(argument))
+
+def setup(converters):
+    converters.set(range, InRangeConverter)
