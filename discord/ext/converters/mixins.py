@@ -5,7 +5,6 @@ from .custom_converters import CONVERTERS
 
 
 class ConvertersMixin(BotBase):
-
     def __init__(self, *args, **kwargs):
         self.converters = {type: converter for type, converter in CONVERTERS}
         super().__init__(*args, **kwargs)

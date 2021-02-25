@@ -1,12 +1,17 @@
-import typing
-from discord.ext import commands
+from typing import Any, Type, TypeVar
+
 import copy
+
+from discord.ext import commands
+
+
+_CCT = TypeVar('_CCT', bound='CustomConverter')
 
 
 class CustomConverter(commands.Converter):
-    _value: typing.Any
+    _value: Any
 
-    def __class_getitem__(cls, value: typing.Any) -> 'CustomConverter':
-        klass = copy.deepcopy(cls)
-        klass._value = value
-        return klass
+    def __class_getitem__(cls: Type[_CCT], value: Any) -> _CCT:
+        cls = copy.deepcopy(cls)
+        cls._value = value
+        return cls
