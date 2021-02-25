@@ -1,19 +1,41 @@
-discord-ext-converters
-======================
+.. raw:: html
 
-|dependencies| |license|
+    <p align="center">
+        <a href="https://github.com/Ext-Creators/discord-ext-ipc/actions?query=workflow%3AAnalyze+event%3Apush">
+            <img alt="Analyze Status"
+                 src="https://github.com/Ext-Creators/discord-ext-ipc/workflows/Analyze/badge.svg?event=push" />
+        </a>
 
-A collection of useful converters for discord.py.
+        <a href="https://github.com/Ext-Creators/discord-ext-ipc/actions?query=workflow%3ABuild+event%3Apush">
+            <img alt="Build Status"
+                 src="https://github.com/Ext-Creators/discord-ext-ipc/workflows/Build/badge.svg?event=push" />
+        </a>
+
+        <a href="https://github.com/Ext-Creators/discord-ext-ipc/actions?query=workflow%3ACheck+event%3Apush">
+            <img alt="Check Status"
+                 src="https://github.com/Ext-Creators/discord-ext-ipc/workflows/Check/badge.svg?event=push" />
+        </a>
+
+        <a href="https://github.com/Ext-Creators/discord-ext-ipc/actions?query=workflow%3ALint+event%3Apush">
+            <img alt="Lint Status"
+                 src="https://github.com/Ext-Creators/discord-ext-ipc/workflows/Lint/badge.svg?event=push" />
+        </a>
+    </p>
+
+----------
+
+.. raw:: html
+
+    <h1 align="center">discord-ext-converters</h1>
+    <p align="center">A discord.py extension with a collection of useful converters.</p>
 
 
 Installation
 ------------
 
-This extension is currently not in PyPI.
-
 .. code-block:: sh
 
-    $ python3 -m pip install -U git+https://github.com/Ext-Creators/discord-ext-converters
+    python3 -m pip install --upgrade discord-ext-converters
 
 
 Usage
@@ -21,8 +43,4 @@ Usage
 
 .. code-block:: py
 
-    from discord.ext import converters
-    # Adds support for all avaialble converters
-
-.. |dependencies| image:: https://img.shields.io/librariesio/github/Ext-Creators/discord-ext-converters.svg
-.. |license| image:: https://img.shields.io/github/license/Ext-Creators/discord-ext-converters
+    ...
