@@ -28,4 +28,4 @@ jobs:
         python -m pip install --upgrade .
 
     - name: Run MyPy
-      run: mypy -v discord.ext.converters
+      run: mypy -v discord/ext/converters
