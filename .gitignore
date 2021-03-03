@@ -1,1 +1,10 @@
+# python
 __pycache__/
+
+# python distribution
+build/
+dist/
+*.egg-info/
+
+# mypy
+.mypy_cache/
