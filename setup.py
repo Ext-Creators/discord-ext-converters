@@ -14,7 +14,7 @@ with open("README.rst", encoding="utf-8") as f:
 setup(
     name="discord-ext-converters",
     author="Ext-Creators",
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     url="https://github.com/Ext-Creators/discord-ext-converters",
     version=version,
     packages=["discord.ext.converters", "discord.ext.converters.custom_converters"],
@@ -32,6 +32,7 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Topic :: Internet",
